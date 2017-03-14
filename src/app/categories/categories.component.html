@@ -1,3 +1,35 @@
-<p>
-  categories works!
-</p>
+<div class="container">
+	<!-- Input form area. -->
+	
+	<div class="row">
+		<h4 *ngIf="submitted">Category added Successfully!</h4>  
+
+		<form (ngSubmit)="onSubmit()" #catgegoryForm="ngForm">
+			<label for="categoryName">Category Name</label>
+			<input type="text" name="categoryName"  [(ngModel)]="category.name" required/>
+			<br/>
+			<label for="categoryName">Category Description</label>
+			<textarea name="categoryDescription" [(ngModel)]="category.description" required></textarea>
+			<br/>
+			<!-- <input type="submit" name="save" value="Save"> -->
+			<button type="submit" class="btn btn-success" [disabled]="!catgegoryForm.valid">Submit</button>
+		</form>
+	</div>
+	
+	<div class="row">
+		<table border="1"  *ngIf="Categories">
+			<thead>
+				<th>Name</th>
+				<th>Description</th>
+			</thead>
+				
+			<tbody *ngFor="let category of Categories">
+				<tr>
+			 		<td>{{ category.name }}</td>
+			 		<td>{{ category.description }}</td>	 		
+			 	</tr>	
+			</tbody>	 	
+		</table> 
+	</div>	
+</div>
+

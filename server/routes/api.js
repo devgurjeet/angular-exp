@@ -22,11 +22,8 @@ router.get('/categories', (req, res) => {
 router.post('/categories', (req, res) => {
   	var categories = new Categories();
 
-	var data = req.body;
-
-	categories.name        = req.body.name;
+  	categories.name        = req.body.name;
 	categories.description = req.body.description;
-	
 
 	categories.save( function(err) {
 		if(err) res.send(err);
