@@ -44,4 +44,19 @@ router.get('/categories/:category_id', (req, res) => {
 	});
 });
 
+/*delete category */
+router.delete('/categories/:category_id', (req, res) => {
+
+	console.log(req.params.category_id)
+
+  	Categories.remove({
+        _id: req.params.category_id
+    }, function(err, categories) {
+        if (err)
+            res.send(err);
+
+        res.json({ message: 'Successfully deleted' });
+	});
+});
+
 module.exports = router;

@@ -38,4 +38,17 @@ export class CategoriesComponent implements OnInit {
         }); 
     }
 
+    deleteCategory( categoryID ){
+        console.log(  categoryID );
+
+        this._categoriesService.deleteCategories( categoryID ).subscribe(res => {
+            this.response = res;
+        });    
+        
+        /* Refresh the category list */
+        this._categoriesService.getCategories().subscribe(categories => {
+            this.Categories = categories;
+        }); 
+
+    }
 }

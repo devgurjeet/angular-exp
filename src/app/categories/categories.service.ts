@@ -17,9 +17,15 @@ export class CategoriesService {
 		let options = new RequestOptions({ headers: headers });
 		
 		let body = JSON.stringify(category);
-		
-    	return this.http.post('/api/Categories', category, headers).map((res) => res.json());
-        
+
+    	return this.http.post('/api/Categories', category, headers).map((res) => res.json());        
     }
+
+
+    deleteCategories( categoryID ){
+    	return this.http.delete('/api/Categories/'+categoryID).map((res) => res.json());        
+    }    
+
+    
 
 }
