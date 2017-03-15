@@ -10,7 +10,8 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 export class CategoriesComponent implements OnInit {
     
     public submitted: boolean; // keep track on whether form is submitted
-    public Categories: any = {};
+    public Categories: any = [];
+    
     public category:any    = {};
     public response: string;
     
