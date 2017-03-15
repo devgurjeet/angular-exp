@@ -9,16 +9,23 @@ import { AppComponent } from './app.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { CategoriesService } from './categories/categories.service';
 
+import { DailyExpenseEntryComponent } from './daily-expense-entry/daily-expense-entry.component';
+import { DailyExpenseEntryService } from './daily-expense-entry/daily-expense-entry.service';
+
 // Define the routes
 const ROUTES = [
   {
     path: '',
-    redirectTo: 'categories',
+    redirectTo: 'expenses',
     pathMatch: 'full'
   },
   {
     path: 'categories',
     component: CategoriesComponent
+  }, 
+  {
+    path: 'expenses',
+    component: DailyExpenseEntryComponent
   }
 ];
 
@@ -26,16 +33,17 @@ const ROUTES = [
 @NgModule({
   declarations: [
     AppComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    DailyExpenseEntryComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule,
+    HttpModule,    
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [CategoriesService],
+  providers: [CategoriesService,DailyExpenseEntryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
