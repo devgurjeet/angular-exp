@@ -13,14 +13,18 @@ export class CategoriesComponent implements OnInit {
     public Categories: any = [];
     public category:any  = {};
     public response: string;
-
+    
     constructor(private _categoriesService: CategoriesService) {}
 
 	ngOnInit() {
+        this.getCategories();        
+	}
+
+    getCategories() {
         this._categoriesService.getCategories().subscribe(categories => {
             this.Categories = categories;
-        });
-	}
+        });        
+    }
 
     onSubmit() { 
 
@@ -33,9 +37,7 @@ export class CategoriesComponent implements OnInit {
         this.category = {};      
 
         /* Refresh the category list */
-        this._categoriesService.getCategories().subscribe(categories => {
-            this.Categories = categories;
-        }); 
+        this.getCategories();         
     }
 
     deleteCategory( categoryID ){
@@ -46,9 +48,11 @@ export class CategoriesComponent implements OnInit {
         });    
         
         /* Refresh the category list */
-        this._categoriesService.getCategories().subscribe(categories => {
-            this.Categories = categories;
-        }); 
+        this.getCategories();               
+    }
 
+    /*Close success message*/
+    closeMessage(){
+        this.submitted = false;        
     }
 }
