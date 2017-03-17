@@ -5,13 +5,15 @@ const http       = require('http');
 const bodyParser = require('body-parser');
 const mongoose   = require('mongoose')
 
+
 mongoose.Promise = global.Promise;
 /* conntect to database */
-mongoose.connect('mongodb://localhost:27017/exp');
-/*mongoose.connect('mongodb://admin:admin!@#12397@ds129610.mlab.com:29610/exp', function(err) {
+// mongoose.connect('mongodb://localhost:27017/exp');
+mongoose.connect('mongodb://admin:admin@ds133450.mlab.com:33450/exp', function(err) {
     if (err) throw err;
 });
-*/
+
+
 // Get our API routes
 const api = require('./server/routes/api');
 
